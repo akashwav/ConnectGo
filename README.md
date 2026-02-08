@@ -214,5 +214,3 @@ This project is distributed under the MIT License. See `LICENSE` for more inform
 * Special thanks to the open-source community for the amazing tools used in this project.
 
 ---
-
-### **Made with ❤️ by Akash**
