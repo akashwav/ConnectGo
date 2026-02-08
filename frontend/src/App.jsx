@@ -36,8 +36,8 @@ function App() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setVisible(false), 1500); // start fade
-    const t2 = setTimeout(() => setShowSplash(false), 1800); // remove
+    const t1 = setTimeout(() => setVisible(false), 1800); // start fade
+    const t2 = setTimeout(() => setShowSplash(false), 2000); // remove
 
     return () => {
       clearTimeout(t1);
