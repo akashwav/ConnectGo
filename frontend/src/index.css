@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none; /* Disables browser gestures like pull-to-refresh */
+}
+
+/* Glassy Scrollbar Logic */
+::-webkit-scrollbar {
+  width: 6px; /* Very thin */
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* See-through track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2); /* Indigo-500 with low opacity */
+  border-radius: 10px;
+  backdrop-filter: blur(4px); /* Glass effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.6); /* Darker on hover */
+}
