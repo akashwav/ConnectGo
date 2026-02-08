@@ -11,6 +11,8 @@ html, body, #root {
   overflow: hidden;
   overscroll-behavior: none;
   touch-action: none; /* Disables browser gestures like pull-to-refresh */
+  padding-top: env(safe-area-inset-top); 
+  background-color: white; /* Matches status bar */
 }
 
 /* Glassy Scrollbar Logic */

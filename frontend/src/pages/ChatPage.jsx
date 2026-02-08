@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import ChatWindow from '../components/ChatWindow';
 import { ChatState } from '../context/ChatProvider';
+import { App } from '@capacitor/app';
 
 const ChatPage = () => {
-  const { selectedChat } = ChatState();
+  const { selectedChat, setSelectedChat } = ChatState();
   const [sidebarWidth, setSidebarWidth] = useState(400);
   const [isResizing, setIsResizing] = useState(false);
 
@@ -27,6 +28,22 @@ const ChatPage = () => {
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isResizing]);
+
+  useEffect(() => {
+    const backButtonListener = App.addListener('backButton', () => {
+      if (selectedChat) {
+        // If chat is open, close it (go back to sidebar)
+        setSelectedChat(null);
+      } else {
+        // If on sidebar, minimize/exit app
+        App.exitApp();
+      }
+    });
+
+    return () => {
+      backButtonListener.remove();
+    };
+  }, [selectedChat, setSelectedChat]);
 
   return (
     // fixed inset-0 = Locks layout to viewport exactly

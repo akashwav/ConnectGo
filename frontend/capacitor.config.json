@@ -1,0 +1,12 @@
+{
+  "appId": "com.akash.connectgo",
+  "appName": "ConnectGo",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "autoHide": true,
+      "showSpinner": false
+    }
+  }
+}

@@ -2,15 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import { BrowserRouter } from "react-router-dom"; // Import this
+import { BrowserRouter, HashRouter } from "react-router-dom";
+import { Capacitor } from '@capacitor/core';
+
 import ChatProvider from "./context/ChatProvider";
+
+// ✅ choose router based on platform
+const Router = Capacitor.isNativePlatform()
+  ? HashRouter     // Android / iOS
+  : BrowserRouter; // Web
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter> {/* Wrap App here */}
-      <ChatProvider> {/* Wrap here */}
+    <Router>
+      <ChatProvider>
         <App />
       </ChatProvider>
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>,
 );
