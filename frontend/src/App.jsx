@@ -36,8 +36,8 @@ function App() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setVisible(false), 1800); // start fade
-    const t2 = setTimeout(() => setShowSplash(false), 2000); // remove
+    const t1 = setTimeout(() => setVisible(false), 1800);
+    const t2 = setTimeout(() => setShowSplash(false), 2000);
 
     return () => {
       clearTimeout(t1);
@@ -47,11 +47,11 @@ function App() {
 
   return (
     <div className="App min-h-screen bg-gray-100 text-gray-900 font-sans">
-      
+
       {showSplash && <SplashScreen visible={visible} />}
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage splashActive={showSplash} />} />
         <Route path="/chats" element={<ChatPage />} />
       </Routes>
     </div>

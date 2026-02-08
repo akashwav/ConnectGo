@@ -75,19 +75,34 @@ const ChatWindow = () => {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message received", (newMessageRecieved) => {
+  if (!socket) return;
+
+  const messageHandler = (newMessageRecieved) => {
+    setMessages(prevMessages => {
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
+        // message for another chat → update list only
         updateChatList(newMessageRecieved, true);
-      } else {
-        setMessages([...messages, newMessageRecieved]);
-        updateChatList(newMessageRecieved, false);
-        setTimeout(scrollToBottom, 100);
+        return prevMessages;
       }
+
+      // message for current open chat
+      updateChatList(newMessageRecieved, false);
+      setTimeout(scrollToBottom, 100);
+
+      return [...prevMessages, newMessageRecieved];
     });
-  });
+  };
+
+  socket.on("message received", messageHandler);
+
+  return () => {
+    socket.off("message received", messageHandler);
+  };
+
+}, [selectedChat, chats]); // ✅ keep deps
 
   const sendMessage = async (event) => {
     if ((event.key === "Enter" || event.type === "click") && newMessage) {
@@ -142,9 +157,9 @@ const ChatWindow = () => {
 
   return (
     // Flex Column Layout: Ensures precise stacking without absolute positioning glitches
-    <div className="flex flex-col w-full h-full bg-[#efeae2] select-none overflow-hidden">
+    <div className="flex flex-col w-full h-[100dvh] bg-[#efeae2] select-none overflow-hidden">
       {/* 1. HEADER - shrink-0 prevents it from being squashed */}
-      <div className="h-[64px] shrink-0 px-4 bg-white border-b border-gray-200 flex items-center shadow-sm z-20">
+      <div className="sticky top-0 h-[64px] shrink-0 px-4 bg-white border-b border-gray-200 flex items-center shadow-sm z-30">
         <button
           className="md:hidden mr-4 text-gray-500 hover:text-indigo-600 p-2"
           onClick={() => setSelectedChat(null)}
@@ -165,7 +180,7 @@ const ChatWindow = () => {
       </div>
 
       {/* 2. MESSAGES AREA - flex-1 takes all available height, scrolls internally */}
-      <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 space-y-4 bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-repeat opacity-100">
+      <div className="flex-1 overflow-y-auto overscroll-y-contain touch-pan-y px-4 py-4 space-y-4 bg-slate-100 bg-repeat opacity-100">
         {loading ? (
           <div className="flex justify-center mt-10">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
@@ -205,7 +220,7 @@ const ChatWindow = () => {
       </div>
 
       {/* 3. INPUT AREA - shrink-0 ensures it stays at bottom */}
-      <div className="min-h-[72px] shrink-0 bg-white border-t border-gray-200 z-20 flex items-center px-2 pb-safe">
+      <div className="min-h-[72px] shrink-0 bg-white border-t border-gray-200 z-20 flex items-center px-2 pb-safe env(safe-area-inset-bottom)">
         <div className="flex items-center gap-2 w-full p-2">
           <input
             ref={inputRef}
