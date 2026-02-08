@@ -47,7 +47,6 @@ This project was built using the following technologies:
 
 * **React.js (Vite):** For building a fast, interactive user interface.
 * **Tailwind CSS:** For utility-first, responsive styling.
-* **Chakra UI:** For pre-built accessible components.
 * **Capacitor:** For converting the web app into a native Android APK.
 
 ### **Backend**
@@ -59,8 +58,8 @@ This project was built using the following technologies:
 
 ### **Deployment**
 
-* **Frontend:** Hosted on [Vercel](https://www.google.com/search?q=https://vercel.com).
-* **Backend:** Hosted on [Render](https://www.google.com/search?q=https://render.com).
+* **Frontend:** Hosted on [Vercel](https://connectgo-git.vercel.app/).
+* **Backend:** Hosted on [Render]
 
 ---
 
@@ -70,14 +69,14 @@ The repository is organized into a client-server architecture:
 
 ```text
 ConnectGo/
-├── chat-server/             # Backend (Node.js/Express)
+├── backend/             # Backend (Node.js/Express)
 │   ├── config/              # Database configuration
 │   ├── controllers/         # Request logic
 │   ├── models/              # MongoDB Schemas
 │   ├── routes/              # API Routes
 │   └── index.js             # Entry point
 │
-├── my-chat-app/             # Frontend (React/Vite)
+├── frontend/             # Frontend (React/Vite)
 │   ├── android/             # Native Android project files
 │   ├── src/
 │   │   ├── components/      # Reusable UI components (Sidebar, ChatWindow)
@@ -103,7 +102,7 @@ Ensure you have **Node.js** and **Git** installed on your system. For Android bu
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ConnectGo.git
+git clone https://github.com/akashwav/ConnectGo.git
 cd ConnectGo
 
 ```
@@ -113,7 +112,7 @@ cd ConnectGo
 Navigate to the server directory and install dependencies:
 
 ```bash
-cd chat-server
+cd backend
 npm install
 
 ```
@@ -140,7 +139,7 @@ npm start
 Open a new terminal, navigate to the client directory, and install dependencies:
 
 ```bash
-cd my-chat-app
+cd frontend
 npm install
 
 ```
@@ -168,7 +167,7 @@ To generate the Android APK using Capacitor:
 
 1. **Build the React project:**
 ```bash
-cd my-chat-app
+cd frontend
 npm run build
 
 ```
