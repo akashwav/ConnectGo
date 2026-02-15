@@ -11,6 +11,7 @@
 * [Technology Stack](https://www.google.com/search?q=%23-technology-stack)
 * [Project Structure](https://www.google.com/search?q=%23-project-structure)
 * [Setup and Installation](https://www.google.com/search?q=%23-setup-and-installation)
+* [Running with Docker](https://www.google.com/search?q=%23-running-with-docker)
 * [Mobile Build (Android)](https://www.google.com/search?q=%23-mobile-build-android)
 * [Usage](https://www.google.com/search?q=%23-usage)
 * [License](https://www.google.com/search?q=%23-license)
@@ -158,6 +159,33 @@ Start the client:
 npm run dev
 
 ```
+
+---
+
+## 🐳 Running with Docker
+
+You can also run the entire application using Docker and Docker Compose. This is the easiest way to get started, as it handles all the dependencies and configuration for you.
+
+### 1. Prerequisites
+
+Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your system.
+
+### 2. Build and Run
+
+From the root of the project, run the following command:
+
+```bash
+docker compose up -d
+```
+
+This command will build the Docker images for both the frontend and backend services and start them in detached mode.
+
+### 3. Access the Application
+
+Once the containers are running, you can access the application at:
+
+*   **Frontend:** `http://localhost`
+*   **Backend:** `http://localhost:5000`
 
 ---
 
