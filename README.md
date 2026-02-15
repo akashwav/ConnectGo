@@ -6,15 +6,16 @@
 
 ## 📖 Table of Contents
 
-* [About The Project](https://www.google.com/search?q=%23-about-the-project)
-* [Key Features](https://www.google.com/search?q=%23-key-features)
-* [Technology Stack](https://www.google.com/search?q=%23-technology-stack)
-* [Project Structure](https://www.google.com/search?q=%23-project-structure)
-* [Setup and Installation](https://www.google.com/search?q=%23-setup-and-installation)
-* [Mobile Build (Android)](https://www.google.com/search?q=%23-mobile-build-android)
-* [Usage](https://www.google.com/search?q=%23-usage)
-* [License](https://www.google.com/search?q=%23-license)
-* [Acknowledgements](https://www.google.com/search?q=%23-acknowledgements)
+* [About The Project](#-about-the-project)
+* [Key Features](#-key-features)
+* [Technology Stack](#-technology-stack)
+* [Project Structure](#-project-structure)
+* [Setup and Installation](#-setup-and-installation)
+* [Running with Docker](#-running-with-docker)
+* [Mobile Build (Android)](#-mobile-build-android)
+* [Usage](#-usage)
+* [License](#-license)
+* [Acknowledgements](#-acknowledgements)
 
 ---
 
@@ -161,6 +162,33 @@ npm run dev
 
 ---
 
+## 🐳 Running with Docker
+
+You can also run the entire application using Docker and Docker Compose. This is the easiest way to get started, as it handles all the dependencies and configuration for you.
+
+### 1. Prerequisites
+
+Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your system.
+
+### 2. Build and Run
+
+From the root of the project, run the following command:
+
+```bash
+docker compose up -d
+```
+
+This command will build the Docker images for both the frontend and backend services and start them in detached mode.
+
+### 3. Access the Application
+
+Once the containers are running, you can access the application at:
+
+*   **Frontend:** `http://localhost`
+*   **Backend:** `http://localhost:5000`
+
+---
+
 ## 📱 Mobile Build (Android)
 
 To generate the Android APK using Capacitor:
@@ -208,9 +236,9 @@ This project is distributed under the MIT License. See `LICENSE` for more inform
 
 ## 👏 Acknowledgements
 
-* [Socket.io Documentation](https://www.google.com/search?q=https://socket.io/docs/v4/)
-* [Tailwind CSS](https://www.google.com/search?q=https://tailwindcss.com/)
-* [Render & Vercel](https://www.google.com/search?q=https://render.com/) for hosting support.
+* [Socket.io Documentation](https://socket.io/docs/v4/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Render & Vercel](https://render.com/) for hosting support.
 * Special thanks to the open-source community for the amazing tools used in this project.
 
 ---
